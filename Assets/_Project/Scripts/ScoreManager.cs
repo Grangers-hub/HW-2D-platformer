@@ -1,28 +1,22 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static ScoreManager Instance { get; private set; }
 
-    [Header("Интерфейс")]
     [SerializeField] private TextMeshProUGUI _scoreText;
-
-    private int _score = 0;
+    private int _score;
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
-            Destroy(gameObject); 
-        }
+            Destroy(gameObject);
     }
 
-    public void AddScore(int points)
+    public void AddPoints(int points)
     {
         _score += points;
         UpdateUI();
@@ -32,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         if (_scoreText != null)
         {
-            _scoreText.text = "Гемы: " + _score.ToString();
+            _scoreText.text = "Гемы: " + _score;
         }
     }
 }

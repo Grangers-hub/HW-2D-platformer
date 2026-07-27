@@ -7957,8 +7957,11 @@ GameObject:
   - component: {fileID: 399560006}
   - component: {fileID: 399560005}
   - component: {fileID: 399560004}
-  - component: {fileID: 399560003}
   - component: {fileID: 399560008}
+  - component: {fileID: 399560012}
+  - component: {fileID: 399560011}
+  - component: {fileID: 399560010}
+  - component: {fileID: 399560009}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7966,25 +7969,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &399560003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399560002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7adf6c1b3e48bb42b2c2d3951dc4736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  _moveSpeed: 5
-  _jumpForce: 9
-  _groundCheck: {fileID: 96578455}
-  _groundCheckRadius: 0.2
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!70 &399560004
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -8146,6 +8130,61 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &399560009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399560002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85294e47bbba8ea4085eeb06e2d11e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _moveSpeed: 5
+  _jumpForce: 9
+--- !u!114 &399560010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399560002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140dfaa5ac2a421499d1093f7ae9bec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundDetector
+  _groundCheckPoint: {fileID: 96578455}
+  _radius: 0.2
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &399560011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399560002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10471e41e898bdc4aa3e3b8ae8a50da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+--- !u!114 &399560012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399560002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13c5113bf3f562478804cf7b57521c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &399757899
 GameObject:
   m_ObjectHideFlags: 0
@@ -8386,12 +8425,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458580dfaa57ab844bb307475c12d3f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ee4d9b574322ef4a9076f264728ba41, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   _target: {fileID: 399560007}
   _smoothSpeed: 5
-  _offset: {x: 0, y: 0, z: -10}
+  _offset: {x: 0, y: 2, z: -10}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8557,7 +8596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 987558388}
-  - component: {fileID: 987558389}
+  - component: {fileID: 987558390}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8580,7 +8619,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &987558389
+--- !u!114 &987558390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8589,9 +8628,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 987558387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11fc29541a3a6bb479cff15c0aead10f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a94af0adc778d6458ca623b8cfc3a09, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   _scoreText: {fileID: 55982298}
 --- !u!4 &996852228 stripped
 Transform:
@@ -9785,6 +9824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2020776758}
+  - component: {fileID: 2020776759}
   m_Layer: 0
   m_Name: Gems
   m_TagString: Untagged
@@ -9814,6 +9854,19 @@ Transform:
   - {fileID: 377573453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2020776759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020776757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5b094d759dfe44a8217fbfb7e3c722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gem
+  _pointsValue: 1
 --- !u!4 &2069408900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2856961774287083161, guid: ecdedeb48ecec3b4ab105d4afdb5eee5, type: 3}

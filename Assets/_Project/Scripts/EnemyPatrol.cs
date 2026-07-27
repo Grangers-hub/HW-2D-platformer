@@ -28,7 +28,7 @@ public class EnemyPatrol : MonoBehaviour
 
         _rigidbody.linearVelocity = new Vector2(direction.x * _speed, _rigidbody.linearVelocity.y);
 
-        CheckFlip(direction.x);
+        UpdateRotation(direction.x);
 
         float distanceToTarget = Mathf.Abs(transform.position.x - _currentTarget.position.x);
 
@@ -50,15 +50,13 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    private void CheckFlip(float directionX)
+    private void UpdateRotation(float directionX)
     {
         if (_isFacingRight && directionX < 0f || !_isFacingRight && directionX > 0f)
         {
             _isFacingRight = !_isFacingRight;
-
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            float yRotation = _isFacingRight ? 180f : 0f;
+            transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
         }
     }
 }
